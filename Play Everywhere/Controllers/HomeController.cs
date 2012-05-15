@@ -24,7 +24,7 @@ namespace Play_Everywhere.Controllers
 
         public ActionResult Contact()
         {
-            ViewBag.Message = "Your quintessential contact page.";
+            ViewBag.Message = "Your quintessential contact page. asd";
 
             return View();
         }
