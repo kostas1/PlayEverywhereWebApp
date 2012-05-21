@@ -27,6 +27,7 @@ namespace PlayEv.WebUI.Infrastructure
         private void AddBindings()
         {
             ninjectKernel.Bind<IUserRepository>().To<EFUserRepository>();
+            ninjectKernel.Bind<IGameRepository>().To<EFGameRepository>();
         }
 
 
