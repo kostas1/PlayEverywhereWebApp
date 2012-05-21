@@ -5,7 +5,7 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>d9e47477-b22e-4de6-b57a-31b27082eba1</ProjectGuid>
+    <ProjectGuid>{76AE5367-A0A7-4194-879F-BB3EF950572C}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>PlayEv.Model</RootNamespace>

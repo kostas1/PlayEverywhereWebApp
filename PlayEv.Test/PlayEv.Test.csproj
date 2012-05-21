@@ -6,7 +6,7 @@
     <ProductVersion>
     </ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>7895d773-b384-417d-b840-4d248c2ff886</ProjectGuid>
+    <ProjectGuid>{524189E8-FEAD-4A62-9211-8945EDCB6E81}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>PlayEv.Test</RootNamespace>
