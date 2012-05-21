@@ -1,0 +1,17 @@
+﻿@model PlayEv.WebUI.Models.UserLoginViewModel
+
+@{
+    ViewBag.Title = "Login";
+}
+@{
+    var message = TempData["message"];
+    if(message != null){
+        <div>@message</div>
+    }
+}
+
+@using (Html.BeginForm())
+{
+    @Html.EditorForModel(Model)
+    <input type="submit" value="Login" />
+}

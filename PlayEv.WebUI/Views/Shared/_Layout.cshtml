@@ -4,11 +4,46 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
     <title>@ViewBag.Title</title>
-    <link href="@System.Web.Optimization.BundleTable.Bundles.ResolveBundleUrl("~/Content/css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/PlayEv.css")" rel="stylesheet" type="text/css" />
     <link href="@System.Web.Optimization.BundleTable.Bundles.ResolveBundleUrl("~/Content/themes/base/css")" rel="stylesheet" type="text/css" />
     <script src="@System.Web.Optimization.BundleTable.Bundles.ResolveBundleUrl("~/Scripts/js")"></script>
 </head>
 <body>
-    @RenderBody()
+    <div id="container">
+        <div id="header">
+            <div id="logo">
+                <img src="@Url.Content("~/Content/images/logo.jpg")" alt="PlayEv" /></div>
+            <div id="profile">
+                @{
+                    Html.RenderPartial("ProfileSummary");
+                }
+            </div>
+            <div class="clearB">
+            </div>
+        </div>
+        <div id="navigation">
+            <div id="categories">
+                <ul>
+                    <li>Action</li>
+                    <li>Gambling</li>
+                    <li>Puzzle</li>
+                </ul>
+                <div class="clearB">
+                </div>
+            </div>
+            <div id="search">
+                <label>
+                    Search:
+                    <input type="search" /></label>
+                <button>
+                    Go</button>
+            </div>
+            <div class="clearB">
+            </div>
+        </div>
+        <div id="content">
+            @RenderBody()
+        </div>
+    </div>
 </body>
 </html>

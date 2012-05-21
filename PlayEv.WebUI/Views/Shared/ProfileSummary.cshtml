@@ -1,0 +1,7 @@
+﻿@{
+    if(Request.IsAuthenticated){
+        <div>@User.Identity.Name | @Html.RouteLink("Log out", new { controller="User", action="LogOut"})</div>
+    }else{
+        @Html.RouteLink("Login", new { controller="User", action="Login"});
+    }
+}

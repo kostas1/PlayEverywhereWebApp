@@ -6,6 +6,8 @@ using System.Web.Mvc;
 using Ninject;
 using PlayEv.Model.Concrete;
 using PlayEv.Model.Abstract;
+using PlayEv.WebUI.Infrastructure.Abstract;
+using PlayEv.WebUI.Infrastructure.Concrete;
 
 namespace PlayEv.WebUI.Infrastructure
 {
@@ -28,6 +30,7 @@ namespace PlayEv.WebUI.Infrastructure
         {
             ninjectKernel.Bind<IUserRepository>().To<EFUserRepository>();
             ninjectKernel.Bind<IGameRepository>().To<EFGameRepository>();
+            ninjectKernel.Bind<IAuthProvider>().To<SimpleAuthProvider>();
         }
 
 

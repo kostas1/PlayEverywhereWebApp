@@ -47,5 +47,10 @@ namespace PlayEv.WebUI
             BundleTable.Bundles.RegisterTemplateBundles();
             ControllerBuilder.Current.SetControllerFactory(new NinjectControllerFactory());
         }
+
+        private void AddBundles()
+        {
+            BundleTable.Bundles.EnableDefaultBundles();
+        }
     }
 }
