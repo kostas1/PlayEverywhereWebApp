@@ -10,5 +10,6 @@ namespace PlayEv.Model.Concrete
     class EFDbContext:DbContext
     {
         public DbSet<User> Users { get;set;}
+        public DbSet<Game> Games { get; set; }
     }
 }
