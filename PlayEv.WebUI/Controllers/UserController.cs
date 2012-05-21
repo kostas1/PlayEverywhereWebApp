@@ -19,13 +19,13 @@ namespace PlayEv.WebUI.Controllers
     {
         private IUserRepository repository;
         private IAuthProvider authProvider;
-        private MD5 md5;
+        private SHA512 sha;
 
         public UserController(IUserRepository repository, IAuthProvider authProvider)
         {
             this.repository = repository;
             this.authProvider = authProvider;
-            this.md5 = new MD5CryptoServiceProvider();
+            this.sha = new SHA512CryptoServiceProvider();
         }
 
         public ActionResult Login()
@@ -92,7 +92,7 @@ namespace PlayEv.WebUI.Controllers
 
         private string CalculateMD5(string password)
         {
-            byte[] b = md5.ComputeHash(Encoding.UTF8.GetBytes(password));
+            byte[] b = sha.ComputeHash(Encoding.UTF8.GetBytes(password));
             StringBuilder sB = new StringBuilder();
             foreach (var a in b)
             {
