@@ -6,9 +6,10 @@ using PlayEv.Model.Abstract;
 
 namespace PlayEv.Model.Concrete
 {
-    public class EFUserRepository:IUserRepository
+    public class EFUserRepository : IUserRepository
     {
         private EFDbContext context = new EFDbContext();
+
         public IQueryable<Entities.User> Users
         {
             get { return context.Users; }
