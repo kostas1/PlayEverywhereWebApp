@@ -12,12 +12,12 @@ namespace PlayEv.WebUI.Controllers
     {
         private IUserRepository repository;
 
-        public UserController()
+        public UserController(IUserRepository repository)
         {
-            repository = new EFUserRepository();
+            this.repository = repository;
         }
 
-        public string Users()
+        public string List()
         {
             string result = "";
             foreach(var user in repository.Users){
