@@ -1,0 +1,14 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Data.Entity;
+using PlayEv.Model.Entities;
+
+namespace PlayEv.Model.Concrete
+{
+    class EFDbContext:DbContext
+    {
+        public DbSet<User> Users { get;set;}
+    }
+}

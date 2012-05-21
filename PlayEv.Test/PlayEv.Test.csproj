@@ -46,6 +46,16 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\PlayEv.Model\PlayEv.Model.csproj">
+      <Project>{76AE5367-A0A7-4194-879F-BB3EF950572C}</Project>
+      <Name>PlayEv.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PlayEv.WebUI\PlayEv.WebUI.csproj">
+      <Project>{0AD1FA5F-C11C-4371-B7D3-52A7371FBB4A}</Project>
+      <Name>PlayEv.WebUI</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

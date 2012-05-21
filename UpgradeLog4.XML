@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet type='text/xsl' href='_UpgradeReport_Files/UpgradeReport.xslt'?><UpgradeLog>
+<Properties><Property Name="Solution" Value="Play Everywhere">
+</Property><Property Name="Solution File" Value="C:\Users\v3nom\Documents\Visual Studio 2010\Projects\PlayEv\Play Everywhere.sln">
+</Property><Property Name="Date" Value="2012 m. gegužės 21 d.">
+</Property><Property Name="Time" Value="10:49:26">
+</Property><Property Name="Log Number" Value="4">
+</Property></Properties><Event ErrorLevel="3" Project="PlayEv.WebUI" Source="PlayEv.WebUI\PlayEv.WebUI.csproj" Description="SafeUpgrade">
+</Event><Event ErrorLevel="0" Project="PlayEv.WebUI" Source="PlayEv.WebUI\PlayEv.WebUI.csproj" Description="Project converted successfully">
+</Event><Event ErrorLevel="3" Project="PlayEv.WebUI" Source="PlayEv.WebUI\PlayEv.WebUI.csproj" Description="Converted">
+</Event></UpgradeLog>
