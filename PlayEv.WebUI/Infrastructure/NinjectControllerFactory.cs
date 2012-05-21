@@ -31,6 +31,7 @@ namespace PlayEv.WebUI.Infrastructure
             ninjectKernel.Bind<IUserRepository>().To<EFUserRepository>();
             ninjectKernel.Bind<IGameRepository>().To<EFGameRepository>();
             ninjectKernel.Bind<IAuthProvider>().To<SimpleAuthProvider>();
+            ninjectKernel.Bind<ISecurePass>().To<SHASecurePass>();
         }
 
 

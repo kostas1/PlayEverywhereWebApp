@@ -19,13 +19,13 @@ namespace PlayEv.WebUI.Controllers
     {
         private IUserRepository repository;
         private IAuthProvider authProvider;
-        private SHA512 sha;
+        private ISecurePass passEncrypter;
 
-        public UserController(IUserRepository repository, IAuthProvider authProvider)
+        public UserController(IUserRepository repository, IAuthProvider authProvider, ISecurePass passEncrypter)
         {
             this.repository = repository;
             this.authProvider = authProvider;
-            this.sha = new SHA512CryptoServiceProvider();
+            this.passEncrypter = passEncrypter;
         }
 
         public ActionResult Login()
@@ -38,7 +38,7 @@ namespace PlayEv.WebUI.Controllers
         {
             if (ModelState.IsValid)
             {
-                string encoded = CalculateMD5(user.Password);
+                string encoded = passEncrypter.encriptPassword(user.Password);
                 if (authProvider.Authenticate(user.Username, encoded, repository.Users.FirstOrDefault(u => u.Username == user.Username)))
                 {
                     return RedirectToAction("Account");
@@ -78,7 +78,7 @@ namespace PlayEv.WebUI.Controllers
                 var existing = repository.Users.FirstOrDefault(u => u.Username == user.Username);
                 if (existing == null)
                 {
-                    repository.CreateUser(new User { Username = user.Username, Password = CalculateMD5(user.Password) });
+                    repository.CreateUser(new User { Username = user.Username, Password = passEncrypter.encriptPassword(user.Password) });
                     return RedirectToAction("Account");
                 }
                 else
@@ -88,17 +88,6 @@ namespace PlayEv.WebUI.Controllers
             }
 
             return View();
-        }
-
-        private string CalculateMD5(string password)
-        {
-            byte[] b = sha.ComputeHash(Encoding.UTF8.GetBytes(password));
-            StringBuilder sB = new StringBuilder();
-            foreach (var a in b)
-            {
-                sB.Append(a);
-            }
-            return sB.ToString();
         }
 
     }
