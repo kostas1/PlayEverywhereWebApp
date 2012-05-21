@@ -17,7 +17,7 @@ namespace PlayEv.WebUI.Infrastructure.Concrete
                 return false;
             }
 
-            bool valid = user.password == password;
+            bool valid = user.Password == password;
             if(valid){
                 FormsAuthentication.SetAuthCookie(username, false);
             }

@@ -12,7 +12,7 @@
     <div id="container">
         <div id="header">
             <div id="logo">
-                <img src="@Url.Content("~/Content/images/logo.jpg")" alt="PlayEv" /></div>
+                <a href="@Url.RouteUrl(new { controller="Home", action="Index"})"><img src="@Url.Content("~/Content/images/logo.jpg")" alt="PlayEv" /></a></div>
             <div id="profile">
                 @{
                     Html.RenderPartial("ProfileSummary");

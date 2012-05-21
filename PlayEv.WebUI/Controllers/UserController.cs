@@ -10,6 +10,8 @@ using PlayEv.WebUI.Infrastructure.Abstract;
 using System.Text;
 using System.Security.Cryptography;
 using System.Web.Security;
+using System.Web.UI;
+using PlayEv.Model.Entities;
 
 namespace PlayEv.WebUI.Controllers
 {
@@ -26,27 +28,18 @@ namespace PlayEv.WebUI.Controllers
             this.md5 = new MD5CryptoServiceProvider();
         }
 
-        public string List()
-        {
-            string result = "";
-            foreach (var user in repository.Users)
-            {
-                result += user.Nickname;
-            }
-            return result;
-        }
-
         public ActionResult Login()
         {
             return View();
         }
+
         [HttpPost]
         public ActionResult Login(UserLoginViewModel user)
         {
             if (ModelState.IsValid)
             {
                 string encoded = CalculateMD5(user.Password);
-                if (authProvider.Authenticate(user.Email, encoded, repository.Users.FirstOrDefault(u => u.Email == user.Email)))
+                if (authProvider.Authenticate(user.Username, encoded, repository.Users.FirstOrDefault(u => u.Username == user.Username)))
                 {
                     return RedirectToAction("Account");
                 }
@@ -59,15 +52,42 @@ namespace PlayEv.WebUI.Controllers
             return View();
         }
 
+        [Authorize]
         public ActionResult Account()
         {
-            return null;
+            var user = repository.Users.FirstOrDefault(u => u.Username == User.Identity.Name);
+            return View(user);
         }
 
         public ActionResult LogOut()
         {
             FormsAuthentication.SignOut();
-            return RedirectToAction("Index","Home");
+            return RedirectToAction("Index", "Home");
+        }
+
+        public ActionResult Register()
+        {
+            return View(new UserLoginViewModel());
+        }
+
+        [HttpPost]
+        public ActionResult Register(UserLoginViewModel user)
+        {
+            if (ModelState.IsValid)
+            {
+                var existing = repository.Users.FirstOrDefault(u => u.Username == user.Username);
+                if (existing == null)
+                {
+                    repository.CreateUser(new User { Username = user.Username, Password = CalculateMD5(user.Password) });
+                    return RedirectToAction("Account");
+                }
+                else
+                {
+                    ModelState.AddModelError("Error","Username already takken");
+                }
+            }
+
+            return View();
         }
 
         private string CalculateMD5(string password)

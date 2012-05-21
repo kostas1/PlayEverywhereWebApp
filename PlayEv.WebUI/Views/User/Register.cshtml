@@ -1,0 +1,15 @@
+﻿@model PlayEv.WebUI.Models.UserLoginViewModel
+
+@{
+    ViewBag.Title = "Register";
+}
+
+<h2>Register</h2>
+<div class="ErrorMessage">
+@Html.ValidationSummary()
+</div>
+@using(Html.BeginForm()){
+    <label>Nickname: @Html.EditorFor(m => m.Username)</label><br />
+    <label>Password: @Html.EditorFor(m => m.Password)</label><br />
+    <input type="submit" value="Register" />
+}

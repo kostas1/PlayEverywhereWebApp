@@ -11,8 +11,7 @@ namespace PlayEv.WebUI.Models
     public class UserLoginViewModel
     {
         [Required]
-        [DataType(DataType.EmailAddress)]
-        public string Email { get; set; }
+        public string Username { get; set; }
         // MD5 encoded
         [Required]
         [DataType(DataType.Password)]

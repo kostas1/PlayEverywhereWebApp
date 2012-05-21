@@ -14,5 +14,12 @@ namespace PlayEv.Model.Concrete
         {
             get { return context.Users; }
         }
+
+
+        public void CreateUser(Entities.User user)
+        {
+            context.Users.Add(user);
+            context.SaveChanges();
+        }
     }
 }
