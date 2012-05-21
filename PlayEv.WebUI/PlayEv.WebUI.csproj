@@ -136,6 +136,8 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Infrastructure\Abstract\IAuthProvider.cs" />
+    <Compile Include="Infrastructure\Abstract\ISecurePass.cs" />
+    <Compile Include="Infrastructure\Concrete\SHASecurePass.cs" />
     <Compile Include="Infrastructure\Concrete\SimpleAuthProvider.cs" />
     <Compile Include="Infrastructure\NinjectControllerFactory.cs" />
     <Compile Include="Models\UserLoginViewModel.cs" />
