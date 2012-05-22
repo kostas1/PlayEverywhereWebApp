@@ -55,10 +55,15 @@ namespace PlayEv.WebUI.Controllers
             return View(repository.Games);
         }
 
-        public ActionResult Play(int game, int session)
+        public ActionResult Play(int game)
         {
             ViewBag.GameId = game;
-            ViewBag.GameSession = session;
+            return View();
+        }
+
+        public ActionResult GameWindow(int gameId, string session)
+        {
+            ViewBag.GameId = gameId;
             return View();
         }
 

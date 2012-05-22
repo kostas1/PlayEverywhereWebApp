@@ -2,13 +2,16 @@
 @{
     Layout = null;
 }
-
 @{
-    foreach(var g in Model){
+    foreach (var g in Model)
+    {
+    <div>
         <div>
-            <div><h4>@g.Name</h4></div>
-            <div>@g.Description</div>
-            <div>@g.Category</div>
+            <h4>@g.Name</h4>
         </div>
+        <div>@g.Description</div>
+        <div>@g.Category</div>
+        <div>@Html.ActionLink("Play", "Play", new { game = g.Id })</div>
+    </div>
     }
 }
