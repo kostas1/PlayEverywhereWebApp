@@ -38,22 +38,29 @@ namespace PlayEv.WebUI.Controllers
         [HttpPost]
         public ActionResult SubmitGame(GameModel game, HttpPostedFileBase icon, HttpPostedFileBase sourceCode)
         {
-            
+
             if (ModelState.IsValid)
             {
-                if(icon != null && sourceCode != null)
+                if (icon != null && sourceCode != null)
                 {
-                byte[] _icon = new byte[icon.ContentLength];
-                byte[] _sourceCode = new byte[sourceCode.ContentLength];
+                    byte[] _icon = new byte[icon.ContentLength];
+                    byte[] _sourceCode = new byte[sourceCode.ContentLength];
+                    icon.InputStream.Read(_icon, 0, icon.ContentLength);
+                    sourceCode.InputStream.Read(_sourceCode, 0, sourceCode.ContentLength);
+                    repository.SubmitGame(new Game { Name = game.Name, Description = game.Description, Category = game.Category, Icon = _icon, SourceCode = _sourceCode });
 
-                repository.SubmitGame(new Game { Name = game.Name, Description = game.Description, Category = game.Category, Icon = _icon, SourceCode=_sourceCode });
-                
-                RedirectToAction("Games");
+
+                    RedirectToAction("Games");
                 }
             }
-            
+
 
             return View();
+        }
+
+        public ActionResult List()
+        {
+            return View(repository.Games);
         }
 
     }

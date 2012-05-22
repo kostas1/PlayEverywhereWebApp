@@ -231,10 +231,14 @@
     <Content Include="Views\User\Register.cshtml" />
   </ItemGroup>
   <ItemGroup>
+<<<<<<< HEAD
+    <Content Include="Views\Game\SubmitGame.cshtml" />
+=======
     <Content Include="Views\Game\List.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Game\Play.cshtml" />
+>>>>>>> b20fadaad08880c4078836261ea94419de169513
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
