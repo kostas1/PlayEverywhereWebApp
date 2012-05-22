@@ -19,16 +19,6 @@ namespace PlayEv.WebUI.Controllers
             repository = new EFGameRepository();
         }
 
-        public string Games()
-        {
-            string result = "";
-            foreach (var game in repository.Games)
-            {
-                result += "\n" + game.Name;
-            }
-            return result;
-        }
-
         public ActionResult SubmitGame()
         {
             ViewBag.Category = repository.GetCategories();
@@ -50,12 +40,12 @@ namespace PlayEv.WebUI.Controllers
                     repository.SubmitGame(new Game { Name = game.Name, Description = game.Description, Category = game.Category, Icon = _icon, SourceCode = _sourceCode });
 
 
-                    RedirectToAction("Games");
+                    RedirectToAction("List");
                 }
             }
 
 
-            return View();
+            return View(game);
         }
 
         public ActionResult List()
