@@ -1,6 +1,6 @@
 ﻿@{
     ViewBag.Title = "Index";
 }
-
-<h2>Index</h2>
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed magna felis, malesuada sed faucibus vitae, tincidunt vitae arcu. Pellentesque ac urna at neque consequat mattis. Cras posuere ligula at quam lobortis viverra. Cras dapibus nunc et turpis ultrices pharetra. Etiam eu turpis sem. Sed eleifend orci vel odio sagittis ultrices. Suspendisse mattis, augue vitae eleifend mattis, ipsum enim faucibus elit, et posuere diam lectus in est. Quisque sit amet adipiscing enim. Etiam mi erat, eleifend a porttitor ac, mollis a nisi.</p>
+@{
+    Html.RenderAction("List", new { controller = "Game" });
+}

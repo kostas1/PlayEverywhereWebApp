@@ -5,6 +5,8 @@ using System.Web;
 using System.Web.Mvc;
 using PlayEv.Model.Abstract;
 using PlayEv.Model.Concrete;
+using PlayEv.Model.Entities;
+using System.Text;
 
 namespace PlayEv.WebUI.Controllers
 {
@@ -17,14 +19,25 @@ namespace PlayEv.WebUI.Controllers
             repository = new EFGameRepository();
         }
 
-        public string Games()
+        public ActionResult List()
         {
-            string result = "";
-            foreach (var game in repository.Games)
-            {
-                result += "\n" + game.Name;
+            return View(repository.Games);
+        }
+
+        public ActionResult Play(int gameId)
+        {
+            Game game = repository.Games.FirstOrDefault(g => g.Id == gameId);
+            
+            if(game !=null && game.SourceCode != null){
+                StringBuilder sourceCode = new StringBuilder();
+                foreach (byte s in game.SourceCode)
+                {
+                    sourceCode.Append(s);
+                }
+                ViewBag.Code = sourceCode.ToString();
             }
-            return result;
+            
+            return View();
         }
 
     }
