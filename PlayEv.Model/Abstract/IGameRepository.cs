@@ -9,5 +9,7 @@ namespace PlayEv.Model.Abstract
     public interface IGameRepository
     {
         IQueryable<Game> Games { get; }
+        void SubmitGame(Game game);
+        IEnumerable<string> GetCategories();
     }
 }
