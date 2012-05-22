@@ -7,6 +7,8 @@ using PlayEv.Model.Abstract;
 using PlayEv.Model.Concrete;
 using PlayEv.Model.Entities;
 using PlayEv.WebUI.Models;
+using System.Text;
+using System.IO;
 
 namespace PlayEv.WebUI.Controllers
 {
@@ -40,7 +42,7 @@ namespace PlayEv.WebUI.Controllers
                     repository.SubmitGame(new Game { Name = game.Name, Description = game.Description, Category = game.Category, Icon = _icon, SourceCode = _sourceCode });
 
 
-                    RedirectToAction("List");
+                    return RedirectToAction("List");
                 }
             }
 
@@ -53,5 +55,24 @@ namespace PlayEv.WebUI.Controllers
             return View(repository.Games);
         }
 
+        public ActionResult Play(int game, int session)
+        {
+            ViewBag.GameId = game;
+            ViewBag.GameSession = session;
+            return View();
+        }
+
+        public FileContentResult GameCode(int gameId)
+        {
+            Game game = repository.Games.FirstOrDefault(g => g.Id == gameId);
+            if (game != null)
+            {
+                if (game.SourceCode != null)
+                {
+                    return File(game.SourceCode, "text/javascript");
+                }
+            }
+                return null;
+        }
     }
 }
