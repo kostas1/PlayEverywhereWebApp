@@ -1,0 +1,14 @@
+﻿@model IQueryable<PlayEv.Model.Entities.Game>
+@{
+    Layout = null;
+}
+
+@{
+    foreach(var g in Model){
+        <div>
+            <div><h4>@g.Name</h4></div>
+            <div>@g.Description</div>
+            <div>@g.Category</div>
+        </div>
+    }
+}

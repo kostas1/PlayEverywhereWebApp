@@ -140,7 +140,6 @@
     <Compile Include="Infrastructure\Concrete\SHASecurePass.cs" />
     <Compile Include="Infrastructure\Concrete\SimpleAuthProvider.cs" />
     <Compile Include="Infrastructure\NinjectControllerFactory.cs" />
-    <Compile Include="Models\GameModel.cs" />
     <Compile Include="Models\UserLoginViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -231,7 +230,10 @@
     <Content Include="Views\User\Register.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Game\SubmitGame.cshtml" />
+    <Content Include="Views\Game\List.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Game\Play.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -11,7 +11,7 @@ namespace PlayEv.Model.Entities
         public string Name { get; set; }
         public string Description { get; set; }
         public string Category { get; set; }
-        public byte? Icon { get; set; }
-        public byte? SourceCode { get; set; }
+        public byte[] Icon { get; set; }
+        public byte[] SourceCode { get; set; }
     }
 }
