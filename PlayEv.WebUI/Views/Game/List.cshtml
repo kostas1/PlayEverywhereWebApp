@@ -11,7 +11,7 @@
         </div>
         <div>@g.Description</div>
         <div>@g.Category</div>
-        <div>@Html.ActionLink("Play", "Play", new { game = g.Id })</div>
+        <div>@Html.ActionLink("Play", "Play", new { game = g.Id, session=  new Random().Next(1000)+""+g.Id})</div>
     </div>
     }
 }

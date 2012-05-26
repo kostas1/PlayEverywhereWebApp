@@ -20,13 +20,13 @@ namespace PlayEv.WebUI.Controllers
         {
             repository = new EFGameRepository();
         }
-
+        [Authorize]
         public ActionResult SubmitGame()
         {
             ViewBag.Category = repository.GetCategories();
             return View(new GameModel());
         }
-
+        [Authorize]
         [HttpPost]
         public ActionResult SubmitGame(GameModel game, HttpPostedFileBase icon, HttpPostedFileBase sourceCode)
         {
@@ -54,19 +54,23 @@ namespace PlayEv.WebUI.Controllers
         {
             return View(repository.Games);
         }
-
-        public ActionResult Play(int game)
+        [Authorize]
+        public ActionResult Play(int game, string session)
         {
             ViewBag.GameId = game;
+            ViewBag.GameSession = session;
+            
             return View();
         }
-
+        [Authorize]
         public ActionResult GameWindow(int gameId, string session)
         {
             ViewBag.GameId = gameId;
+            ViewBag.GameTitle = repository.Games.FirstOrDefault(g => g.Id == gameId).Name;
+            ViewBag.GameSession = session;
             return View();
         }
-
+        [Authorize]
         public FileContentResult GameCode(int gameId)
         {
             Game game = repository.Games.FirstOrDefault(g => g.Id == gameId);

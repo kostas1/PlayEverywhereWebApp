@@ -6,21 +6,23 @@
 <head>
 <title>Game</title>
     <script src="http://vivid-frost-4598.herokuapp.com/public/socket.io.js"></script>
-    <script type="text/javascript" src="http://www.html5canvastutorials.com/libraries/kinetic-v3.9.3.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/pew.js")"></script>
+    <script type="text/javascript">
+        @{
+            var username = User.Identity.Name;
+            var application = ViewBag.gameTitle;
+            var room = ViewBag.GameSession;
+            @:var username ="@username";
+            @:var application ="@application";
+            @:var room ="@room";
+        }
+    </script>
     <script type="text/javascript" src="@Url.Action("GameCode", "Game", new { gameId = ViewBag.GameId})">
     </script>
 </head>
 <body>
     <div id="container">
-    </div>
-    <div id="sessionId">
-        <form method="get">
-        <label>
-            <input type="text" name="session" />
-        </label>
-        <input type="submit"/>
-        </form>
     </div>
 </body>
 </html>
