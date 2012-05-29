@@ -13,6 +13,6 @@ namespace PlayEv.Model.Entities
         [HiddenInput(DisplayValue= false)]
         public string Password { get; set; }
         public DateTime? BirthDate { get; set; }
-        public User Friends { get; set; }
+        public IEnumerable<User> Friends { get; set; }
     }
 }
