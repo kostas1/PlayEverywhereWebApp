@@ -11,5 +11,6 @@ namespace PlayEv.Model.Abstract
        IQueryable<User> Users { get; }
        void CreateUser(User user);
        IQueryable<User> Friends(int userId);
+       bool AddFriend(string myUsername, string friendUsername);
     }
 }

@@ -95,7 +95,7 @@ namespace PlayEv.WebUI.Controllers
         [HttpPost]
         public ActionResult AddFriend(string username)
         {
-
+            repository.AddFriend(User.Identity.Name, username);
             return View();
         }
     }

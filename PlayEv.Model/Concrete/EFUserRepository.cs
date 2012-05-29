@@ -36,12 +36,14 @@ namespace PlayEv.Model.Concrete
             return friendProfiles;
         }
 
-        public bool AddFriend(int myId, string username)
+        public bool AddFriend(string myUsername, string friendUsername)
         {
-            User friend = (from f in context.Users where f.Username == username select f).FirstOrDefault();
+            User friend = (from f in context.Users where f.Username == friendUsername select f).FirstOrDefault();
+            User me = (from m in context.Users where m.Username == myUsername select m).FirstOrDefault();
+
             if (friend != null)
             {
-                context.Friends.Add(new FriendRelation() { Myid = myId, Friendid = friend.Id });
+                context.Friends.Add(new FriendRelation() { Myid = me.Id, Friendid = friend.Id });
                 context.SaveChanges();
                 return true;
             }
