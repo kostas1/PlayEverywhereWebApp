@@ -55,7 +55,9 @@ namespace PlayEv.WebUI.Controllers
         [Authorize]
         public ActionResult Account()
         {
+            
             var user = repository.Users.FirstOrDefault(u => u.Username == User.Identity.Name);
+            ViewBag.Friends = repository.Friends(user.Id);
             return View(user);
         }
 
