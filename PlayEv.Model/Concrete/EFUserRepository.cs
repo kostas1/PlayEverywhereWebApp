@@ -24,7 +24,7 @@ namespace PlayEv.Model.Concrete
 
         public IQueryable<User> Friends(int userId)
         {
-            int[] friends = (from f in context.Friends where f.Myid == userId select f.Friendid).ToArray();
+            int[] friends = (from f in context.Friends where f.Id == userId select f.Friendid).ToArray();
             var friendProfiles = from fP in context.Users
                                  where friends.Any(x => x == fP.Id)
                                  select new User()
@@ -43,7 +43,8 @@ namespace PlayEv.Model.Concrete
 
             if (friend != null)
             {
-                context.Friends.Add(new FriendRelation() { Myid = me.Id, Friendid = friend.Id });
+                var fRelation = new Friend() { Id = me.Id, Friendid = friend.Id };
+                context.Friends.Add(fRelation);
                 context.SaveChanges();
                 return true;
             }

@@ -6,10 +6,11 @@ using System.ComponentModel.DataAnnotations;
 
 namespace PlayEv.Model.Entities
 {
-    class FriendRelation
+    class Friend
     {
         [Key]
-        public int Myid { get; set; }
+        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        public int Id { get; set; }
         public int Friendid { get; set; }
     }
 }

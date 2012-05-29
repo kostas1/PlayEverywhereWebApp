@@ -1,7 +1,7 @@
 ﻿@{
     if (Request.IsAuthenticated)
     {
-    <div>@User.Identity.Name | @Html.RouteLink("Log out", new { controller = "User", action = "LogOut" })</div>
+    <div>@User.Identity.Name | @Html.RouteLink("Profile", new { controller = "User", action = "Account" }) | @Html.RouteLink("Log out", new { controller = "User", action = "LogOut" })</div>
     }
     else
     {

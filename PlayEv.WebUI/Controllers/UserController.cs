@@ -84,7 +84,7 @@ namespace PlayEv.WebUI.Controllers
                 }
                 else
                 {
-                    ModelState.AddModelError("Error","Username already takken");
+                    ModelState.AddModelError("Error", "Username already takken");
                 }
             }
 
@@ -92,10 +92,27 @@ namespace PlayEv.WebUI.Controllers
         }
 
         [Authorize]
+        public ActionResult AddFriend()
+        {
+            return View();
+        }
+
+        [Authorize]
         [HttpPost]
         public ActionResult AddFriend(string username)
         {
-            repository.AddFriend(User.Identity.Name, username);
+            if (username != null)
+            {
+                if (!repository.AddFriend(User.Identity.Name, username))
+                {
+                    ModelState.AddModelError("", "Username does not exist");
+                }
+            }
+            else
+            {
+                ModelState.AddModelError("", "Username can not be empty");
+            }
+
             return View();
         }
     }

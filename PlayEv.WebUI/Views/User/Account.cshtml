@@ -5,3 +5,9 @@
 }
 <h3>Account</h3>
 @Html.DisplayForModel(Model)
+
+<h4>Friends</h4>
+
+@{
+    Html.RenderAction("AddFriend");
+}
