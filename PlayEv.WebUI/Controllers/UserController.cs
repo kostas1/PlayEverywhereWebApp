@@ -90,5 +90,12 @@ namespace PlayEv.WebUI.Controllers
             return View();
         }
 
+        [Authorize]
+        [HttpPost]
+        public ActionResult AddFriend(string username)
+        {
+
+            return View();
+        }
     }
 }

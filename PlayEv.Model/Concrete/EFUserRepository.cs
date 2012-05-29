@@ -26,14 +26,29 @@ namespace PlayEv.Model.Concrete
         {
             int[] friends = (from f in context.Friends where f.Myid == userId select f.Friendid).ToArray();
             var friendProfiles = from fP in context.Users
-                                    where friends.Any(x => x == fP.Id)
-                                    select new User()
-                                    {
-                                        Username = fP.Username,
-                                        Id = fP.Id,
-                                        BirthDate = fP.BirthDate
-                                    };
+                                 where friends.Any(x => x == fP.Id)
+                                 select new User()
+                                 {
+                                     Username = fP.Username,
+                                     Id = fP.Id,
+                                     BirthDate = fP.BirthDate
+                                 };
             return friendProfiles;
+        }
+
+        public bool AddFriend(int myId, string username)
+        {
+            User friend = (from f in context.Users where f.Username == username select f).FirstOrDefault();
+            if (friend != null)
+            {
+                context.Friends.Add(new FriendRelation() { Myid = myId, Friendid = friend.Id });
+                context.SaveChanges();
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
     }
 }
