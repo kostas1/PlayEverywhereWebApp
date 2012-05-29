@@ -22,6 +22,11 @@ namespace PlayEv.Model.Concrete
             context.SaveChanges();
         }
 
+<<<<<<< HEAD
+        public List<Entities.User> Friends(int userId)
+        {
+            return (List<User>)context.Users.Where(m => m.Id == userId).Select(f => f.Friends);
+=======
         public IQueryable<User> Friends(int userId)
         {
             int[] friends = (from f in context.Friends where f.Myid == userId select f.Friendid).ToArray();
@@ -34,6 +39,7 @@ namespace PlayEv.Model.Concrete
                                         BirthDate = fP.BirthDate
                                     };
             return friendProfiles;
+>>>>>>> b335490ab67a3ed73a4b13aa8c5563c74abcc8fc
         }
     }
 }

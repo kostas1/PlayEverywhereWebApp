@@ -8,7 +8,7 @@ namespace PlayEv.Model.Entities
 {
     public class User
     {
-        public int Id { get; private set; }
+        public int Id { get; set; }
         public string Username { get; set; }
         [HiddenInput(DisplayValue= false)]
         public string Password { get; set; }

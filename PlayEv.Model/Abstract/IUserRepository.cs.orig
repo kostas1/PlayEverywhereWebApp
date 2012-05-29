@@ -10,6 +10,10 @@ namespace PlayEv.Model.Abstract
     {
        IQueryable<User> Users { get; }
        void CreateUser(User user);
+<<<<<<< HEAD
+       List<User> Friends(int userId);
+=======
        IQueryable<User> Friends(int userId);
+>>>>>>> b335490ab67a3ed73a4b13aa8c5563c74abcc8fc
     }
 }
