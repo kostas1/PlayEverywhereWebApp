@@ -25,7 +25,7 @@ namespace PlayEv.Model.Concrete
 
         public List<Entities.User> Friends(int userId)
         {
-            return (List<User>)context.Users.Where(m => m.Id == userId).Select(f => f.Friends.Username);
+            return (List<User>)context.Users.Where(m => m.Id == userId).Select(f => f.Friends);
         }
     }
 }
