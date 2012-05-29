@@ -11,5 +11,6 @@ namespace PlayEv.Model.Concrete
     {
         public DbSet<User> Users { get;set;}
         public DbSet<Game> Games { get; set; }
+        public DbSet<FriendRelation> Friends { get; set; }
     }
 }
