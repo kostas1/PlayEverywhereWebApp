@@ -10,7 +10,7 @@
     <script src="@Url.Content("~/Scripts/pew.js")"></script>
     <script type="text/javascript">
         @{
-            var username = User.Identity.Name.split('|')[0];
+            string username = User.Identity.Name.Split('|')[0];
             var application = ViewBag.gameTitle;
             var room = ViewBag.GameSession;
         }
