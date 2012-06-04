@@ -22,28 +22,22 @@ namespace PlayEv.Model.Concrete
             context.SaveChanges();
         }
 
-        public IQueryable<User> Friends(int userId)
+        public IEnumerable<User> Friends(int userId)
         {
             int[] friends = (from f in context.Friends where f.Id == userId select f.Friendid).ToArray();
             var friendProfiles = from fP in context.Users
-                                 where friends.Any(x => x == fP.Id)
-                                 select new User()
-                                 {
-                                     Username = fP.Username,
-                                     Id = fP.Id,
-                                     BirthDate = fP.BirthDate
-                                 };
+                                 where friends.Any(x => x == fP.Id) select fP;
+
             return friendProfiles;
         }
 
-        public bool AddFriend(string myUsername, string friendUsername)
+        public bool AddFriend(int userId, string friendUsername)
         {
             User friend = (from f in context.Users where f.Username == friendUsername select f).FirstOrDefault();
-            User me = (from m in context.Users where m.Username == myUsername select m).FirstOrDefault();
 
             if (friend != null)
             {
-                var fRelation = new Friend() { Id = me.Id, Friendid = friend.Id };
+                var fRelation = new Friend() { Id = userId, Friendid = friend.Id };
                 context.Friends.Add(fRelation);
                 context.SaveChanges();
                 return true;
@@ -51,6 +45,17 @@ namespace PlayEv.Model.Concrete
             else
             {
                 return false;
+            }
+        }
+
+        public void RemoveFriend(int userId,int friendId)
+        {
+            Friend friend = (from f in context.Friends where f.Friendid == friendId && f.Id == userId select f).FirstOrDefault();
+
+            if (friend != null)
+            {
+                context.Friends.Remove(friend);
+                context.SaveChanges();
             }
         }
     }

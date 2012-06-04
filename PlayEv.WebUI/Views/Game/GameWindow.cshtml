@@ -10,13 +10,13 @@
     <script src="@Url.Content("~/Scripts/pew.js")"></script>
     <script type="text/javascript">
         @{
-            var username = User.Identity.Name;
+            var username = User.Identity.Name.split('|')[0];
             var application = ViewBag.gameTitle;
             var room = ViewBag.GameSession;
-            @:var username ="@username";
-            @:var application ="@application";
-            @:var room ="@room";
         }
+        var username = "@username";
+        var application = "@application";
+        var room = @room;
     </script>
     <script type="text/javascript" src="@Url.Action("GameCode", "Game", new { gameId = ViewBag.GameId})">
     </script>

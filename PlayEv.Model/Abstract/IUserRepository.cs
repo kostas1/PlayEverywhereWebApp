@@ -8,9 +8,10 @@ namespace PlayEv.Model.Abstract
 {
     public interface IUserRepository
     {
-       IQueryable<User> Users { get; }
-       void CreateUser(User user);
-       IQueryable<User> Friends(int userId);
-       bool AddFriend(string myUsername, string friendUsername);
+        IQueryable<User> Users { get; }
+        void CreateUser(User user);
+        IEnumerable<User> Friends(int userId);
+        bool AddFriend(int myId, string friendUsername);
+        void RemoveFriend(int userId, int friendId);
     }
 }

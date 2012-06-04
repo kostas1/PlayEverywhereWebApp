@@ -4,10 +4,19 @@
     ViewBag.Title = "Account";
 }
 <h3>Account</h3>
+
+<h4>Details</h4>
 @Html.DisplayForModel(Model)
 
 <h4>Friends</h4>
 
 @{
     Html.RenderAction("AddFriend");
+}
+
+@{
+    foreach (var u in Model.Friends)
+    {
+        <p><span>@u.Username</span><span>@Html.ActionLink("Remove", "RemoveFriend", new { friendId = u.Id})</span></p>
+    }
 }

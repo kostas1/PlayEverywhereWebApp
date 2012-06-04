@@ -55,7 +55,8 @@ namespace PlayEv.WebUI.Controllers
         [Authorize]
         public ActionResult Account()
         {
-            var user = repository.Users.FirstOrDefault(u => u.Username == User.Identity.Name);
+            string username = User.Identity.Name.Split('|')[0];
+            var user = repository.Users.FirstOrDefault(u => u.Username == username);
             user.Friends = repository.Friends(user.Id);
             return View(user);
         }
@@ -92,6 +93,7 @@ namespace PlayEv.WebUI.Controllers
         }
 
         [Authorize]
+        [ChildActionOnly]
         public ActionResult AddFriend()
         {
             return View();
@@ -103,7 +105,7 @@ namespace PlayEv.WebUI.Controllers
         {
             if (username != null)
             {
-                if (!repository.AddFriend(User.Identity.Name, username))
+                if (!repository.AddFriend(int.Parse(User.Identity.Name.Split('|')[1]), username))
                 {
                     ModelState.AddModelError("", "Username does not exist");
                 }
@@ -113,6 +115,13 @@ namespace PlayEv.WebUI.Controllers
                 ModelState.AddModelError("", "Username can not be empty");
             }
 
+            return View();
+        }
+
+        [Authorize]
+        public ActionResult RemoveFriend(int friendId)
+        {
+            repository.RemoveFriend(int.Parse(User.Identity.Name.Split('|')[1]), friendId);
             return View();
         }
     }
