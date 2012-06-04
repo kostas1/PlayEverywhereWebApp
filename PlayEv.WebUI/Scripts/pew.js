@@ -36,6 +36,8 @@
 	// { total: 5 }
 	pewIO.onInGame = function(total) { log('Total: ' + total.total); };
 	
+	pewIO.onPlayers = function (players) { log('Players: ' + players.players.join()); };
+
 	// send anything to all other people in a room
 	pewIO.sendMessage = function(message) {
 		pewIO.connection.emit('message', message);
@@ -73,6 +75,10 @@
 	
 	pewIO.connection.on('ingame', function(total) {
 		pewIO.onInGame(total);
+    });
+
+	pewIO.connection.on('players', function (players) {
+	    pewIO.onPlayers(players);
 	});
 	
 })();
