@@ -50,12 +50,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Abstract\IGameRepository.cs" />
+    <Compile Include="Abstract\IInviteRepository.cs" />
     <Compile Include="Abstract\IUserRepository.cs" />
     <Compile Include="Concrete\EFDbContext.cs" />
     <Compile Include="Concrete\EFGameRepository.cs" />
+    <Compile Include="Concrete\EFInviteRepository.cs" />
     <Compile Include="Concrete\EFUserRepository.cs" />
     <Compile Include="Entities\Friend.cs" />
     <Compile Include="Entities\Game.cs" />
+    <Compile Include="Entities\Invite.cs" />
     <Compile Include="Entities\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
