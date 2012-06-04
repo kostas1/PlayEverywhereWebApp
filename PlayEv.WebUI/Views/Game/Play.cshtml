@@ -1,3 +1,39 @@
-﻿<h3>Game</h3>
-<iframe src="@Url.Action("GameWindow", new { gameId = ViewBag.GameId, session = ViewBag.GameSession })" width="800" height="400"  style="border:0px;">
-</iframe>
+﻿<script type="text/javascript">
+        @{
+            var username = User.Identity.Name;
+            var application = ViewBag.gameTitle;
+            var room = ViewBag.GameSession;
+            @:var username ="@username";
+            @:var application ="@application";
+            @:var room ="@room";
+        }
+</script>
+<script src="http://vivid-frost-4598.herokuapp.com/public/socket.io.js"></script>
+<script type="text/javascript" src="../../Scripts/pew.js"></script>
+<script type="text/javascript" src="../../Content/Chat/ChatViewModel.js"></script>
+<link rel="stylesheet" type="text/css" href="../../Content/Chat/Chat.css" />
+
+
+
+
+<div class="game">
+<h3>Game</h3>
+    <iframe src="@Url.Action("GameWindow", new { gameId = ViewBag.GameId, session = ViewBag.GameSession })" width="600" height="400"  style="border:0px;">
+    </iframe>
+</div>
+
+<div class="chat">
+<h3>Chat</h3>
+    <span data-bind="text: infoMessage"></span>
+    <div id="messages" data-bind="text: messagesComputed" class="messages">
+    </div>
+    <!--<div data-bind="text: usersComputed" class="users">
+    </div>-->
+    <div style="clear: both"></div>
+    <div class="controls">
+        <input data-bind='value: message' placeholder="Enter your message" />
+        <button data-bind="click: send">Send</button>
+    </div>
+</div>
+
+

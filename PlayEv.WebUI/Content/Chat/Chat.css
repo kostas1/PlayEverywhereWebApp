@@ -1,0 +1,32 @@
+﻿.users {
+    float: left;
+    width: 300px;
+    height: 200px;
+    border: 1px solid #dadada;
+    overflow: scroll;
+}
+
+.users select {
+    width: 200px;
+}
+
+.messages {
+    float: left;
+    width: 300px;
+    height: 200px;
+    border: 1px solid #dadada;
+    overflow: scroll;
+}
+
+.controls input {
+    width: 240px;
+}
+
+.game {
+    float: left;
+}
+
+.chat {
+    float: left;
+    width: 300px;
+}
